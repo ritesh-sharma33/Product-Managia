@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
+import { LoginComponent } from './user/login.component';
 
 @NgModule({
   imports: [
