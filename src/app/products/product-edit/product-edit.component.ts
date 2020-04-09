@@ -24,7 +24,6 @@ export class ProductEditComponent implements OnInit {
         this.onProductRetrieved(resolvedData.product);
       }
     )
-    
   }
 
   constructor(private productService: ProductService,
