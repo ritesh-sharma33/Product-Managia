@@ -19,6 +19,7 @@ import { ProductEditTagsComponent } from './product-edit/product-edit-tags.compo
         // Before grouping -
         // component: ProductListComponent,
         children: [
+          // After grouping - We are using a component-less routing (We have defined the component less routing here)
           {
             path: '',
             component: ProductListComponent
