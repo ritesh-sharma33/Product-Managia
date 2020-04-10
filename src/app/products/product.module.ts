@@ -14,11 +14,43 @@ import { ProductEditTagsComponent } from './product-edit/product-edit-tags.compo
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'products', component: ProductListComponent },
+      {
+        path: 'products',
+        // Before grouping -
+        // component: ProductListComponent,
+        children: [
+          {
+            path: '',
+            component: ProductListComponent
+          },
+          { path: ':id', component: ProductDetailComponent, resolve: { resolvedData: ProductResolver } },
+          {
+            path: ':id/edit',
+            component: ProductEditComponent,
+            resolve: { resolvedData: ProductResolver },
+            children: [
+              {
+                path: '',
+                redirectTo: 'info',
+                pathMatch: 'full'
+              },
+              {
+                path: 'info',
+                component: ProductEditInfoComponent
+              },
+              {
+                path: 'tags',
+                component: ProductEditTagsComponent
+              }
+            ]
+          }
+        ]
+      },
+      /* Before grouping
       { path: 'products/:id', component: ProductDetailComponent, resolve: { resolvedData: ProductResolver } },
-      { 
-        path: 'products/:id/edit', 
-        component: ProductEditComponent, 
+      {
+        path: 'products/:id/edit',
+        component: ProductEditComponent,
         resolve: { resolvedData: ProductResolver },
         children: [
           {
@@ -36,6 +68,7 @@ import { ProductEditTagsComponent } from './product-edit/product-edit-tags.compo
           }
         ]
       }
+      */
     ])
   ],
   declarations: [
